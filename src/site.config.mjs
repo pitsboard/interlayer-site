@@ -74,8 +74,41 @@ export const home = {
   studio: {
     heading: "Make it yours.",
     lead: "Arrange parts, assign commands and change the look in Studio.",
-    media: { src: "/media/il_lp6.png", alt: "InterLayer Studio", label: "Studio screenshot", ratio: "1661 / 1013" },
+    media: { src: "/media/il_lp6_2.png", alt: "InterLayer Studio", label: "Studio screenshot", ratio: "1200 / 550" },
   },
+  // Text between the Studio image and the three columns.
+  studiosIntro: {
+    heading: "From idea to interface.",
+    lines: [
+      "Turn your ideas into interactive controls.",
+      "Choose your parts, connect commands, and customize everything visually.",
+    ],
+  },
+  // Three columns under the Studio image.
+  studios: [
+    {
+      title: "Overlay Studio",
+      paragraphs: [
+        "Create custom control layouts with buttons, dials, sliders, and more. Assign commands and organize your controls into profiles, layers, and pages for any workflow.",
+      ],
+      media: { src: "/media/il_lp7.png", alt: "Overlay Studio", label: "Overlay Studio image", ratio: "3 / 2" },
+    },
+    {
+      title: "Design Studio",
+      paragraphs: [
+        "Customize colors, shapes, gradients, and visual styles to make every control your own. Create original designs, build on presets, and share them through export and import.",
+      ],
+      media: { src: "/media/il_lp8.png", alt: "Design Studio", label: "Design Studio image", ratio: "3 / 2" },
+    },
+    {
+      title: "Plugin Studio",
+      note: "Planned for a future beta.",
+      paragraphs: [
+        "Connect with external applications to exchange data, display live information, and create dynamic controls that respond to changes in real time.",
+      ],
+      media: { src: "/media/il_lp9.png", alt: "Plugin Studio", label: "Plugin Studio image", ratio: "3 / 2" },
+    },
+  ],
   download: {
     heading: "InterLayer for macOS",
   },

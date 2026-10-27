@@ -13,7 +13,7 @@
   --radius-large: 24px;
   --radius: 16px;
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --section-space: clamp(96px, 14vw, 176px);
+  --section-space: clamp(80px, 10vw, 136px);
 }
 
 *,
@@ -98,6 +98,10 @@ p {
   padding: var(--section-space) 0 0;
 }
 
+.section.hero {
+  padding-top: clamp(40px, 6vw, 80px);
+}
+
 .section .container + .container {
   margin-top: clamp(48px, 7vw, 80px);
 }
@@ -111,11 +115,12 @@ p {
 }
 
 .lead {
-  max-width: 34ch;
+  max-width: 46ch;
   margin: 24px auto 0;
   color: var(--muted);
   font-size: clamp(19px, 2.1vw, 23px);
   line-height: 1.45;
+  text-wrap: balance;
 }
 
 .lead.left {
@@ -392,4 +397,56 @@ p {
   :root {
     --radius-large: 16px;
   }
+}
+
+/* Studios: three columns under the Studio image */
+
+.studios-intro {
+  margin-top: clamp(64px, 8vw, 112px);
+}
+
+.studios-intro h3 {
+  font-size: clamp(28px, 3.4vw, 42px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.studios-intro p {
+  max-width: 56ch;
+  margin: 16px auto 0;
+  color: var(--muted);
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.5;
+}
+
+.studios-intro p + p {
+  margin-top: 4px;
+}
+
+.studios {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+
+.studios h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 12px;
+  row-gap: 4px;
+}
+
+.studios .studio-note {
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.studios .use-case p {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.studios .use-case p + p {
+  margin-top: 14px;
 }
