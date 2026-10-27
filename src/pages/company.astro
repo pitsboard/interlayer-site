@@ -1,0 +1,36 @@
+---
+import Base from "../layouts/Base.astro";
+import { company } from "../site.config.mjs";
+---
+<Base title={`Company — ${company.name}`} description={company.tagline}>
+  <section class="section company">
+    <div class="container narrow">
+      <h1>{company.name}</h1>
+      <p class="lead left">{company.tagline}</p>
+
+      <h2 class="label">Products</h2>
+      <ul class="plain-list">
+        {company.products.map((item) => (
+          <li>{item.href ? <a href={item.href}>{item.name}</a> : item.name}</li>
+        ))}
+      </ul>
+
+      <h2 class="label">Company</h2>
+      <dl class="details">
+        {company.details.map((row) => (
+          <div>
+            <dt>{row.label}</dt>
+            <dd>{row.value}</dd>
+          </div>
+        ))}
+      </dl>
+
+      <h2 class="label" id="contact">Contact</h2>
+      <p>
+        {company.contact.email
+          ? <a href={`mailto:${company.contact.email}`}>{company.contact.email}</a>
+          : company.contact.placeholder}
+      </p>
+    </div>
+  </section>
+</Base>

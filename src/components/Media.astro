@@ -1,0 +1,13 @@
+---
+// A product image or looping video. Without `src` it draws a grey placeholder with `label`,
+// so a section keeps its size until the real media is added (see src/site.config.mjs).
+const { src = "", alt = "", label = "", ratio = "16 / 9", class: className = "" } = Astro.props;
+const isVideo = /\.(mp4|webm)$/i.test(src);
+---
+<figure class:list={["media", className]} style={`aspect-ratio: ${ratio}`}>
+  {src && isVideo && (
+    <video src={src} autoplay muted loop playsinline aria-label={alt}></video>
+  )}
+  {src && !isVideo && <img src={src} alt={alt} loading="lazy" />}
+  {!src && <span class="media-placeholder">{label}</span>}
+</figure>

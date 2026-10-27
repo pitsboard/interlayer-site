@@ -1,0 +1,8 @@
+---
+import { download } from "../site.config.mjs";
+const { size = "large" } = Astro.props;
+const available = download.status === "available" && download.url;
+---
+{available
+  ? <a class:list={["button", size]} href={download.url}>{download.label}</a>
+  : <span class:list={["button", size, "is-disabled"]} aria-disabled="true">{download.comingSoonLabel}</span>}

@@ -1,0 +1,85 @@
+---
+import Base from "../layouts/Base.astro";
+import Media from "../components/Media.astro";
+import DownloadButton from "../components/DownloadButton.astro";
+import { product, download, home } from "../site.config.mjs";
+const { hero, sidecar, anywhere, useCases, studio } = home;
+---
+<Base>
+  <section class="section hero">
+    <div class="container center">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1>{hero.heading}</h1>
+      <p class="lead">{hero.lead}</p>
+      <div class="cta">
+        <DownloadButton />
+        <span class="cta-note">{download.platform}</span>
+      </div>
+    </div>
+    <div class="container wide">
+      <Media {...hero.media} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container center">
+      <h2>{sidecar.heading}</h2>
+      <p class="lead">{sidecar.lead}</p>
+    </div>
+    <div class="container wide">
+      <Media {...sidecar.media} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container center">
+      <h2>{anywhere.heading}</h2>
+      <p class="lead">{anywhere.lead}</p>
+    </div>
+    <div class="container wide">
+      <Media {...anywhere.media} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container center">
+      <h2>{useCases.heading}</h2>
+    </div>
+    <div class="container wide use-cases">
+      {useCases.items.map((item) => (
+        <article class="use-case">
+          <Media {...item.media} />
+          <h3>{item.title}</h3>
+          <p>{item.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container center">
+      <h2>{studio.heading}</h2>
+      <p class="lead">{studio.lead}</p>
+    </div>
+    <div class="container wide">
+      <Media {...studio.media} />
+    </div>
+  </section>
+
+  <section class="section download" id="download">
+    <div class="container center">
+      <img class="app-icon" src={product.icon} alt="" width="88" height="88" />
+      <h2>{home.download.heading}</h2>
+      <div class="cta">
+        <DownloadButton />
+      </div>
+      <div class="requirements">
+        <h3>{download.requirements.heading}</h3>
+        <ul>
+          {download.requirements.items.map((item) => <li>{item}</li>)}
+        </ul>
+        <p class="fine-print">Note: {download.requirements.note}</p>
+      </div>
+    </div>
+  </section>
+</Base>
