@@ -5,7 +5,10 @@ import { company } from "../site.config.mjs";
 <Base title={`Company — ${company.name}`} description={company.tagline}>
   <section class="section company">
     <div class="container narrow">
-      <h1>{company.name}</h1>
+      <h1 class="company-name">
+        <span>{company.heading.main}</span>
+        <span class="company-name-suffix">{company.heading.suffix}</span>
+      </h1>
       <p class="lead left">{company.tagline}</p>
 
       <h2 class="label">Products</h2>
@@ -20,7 +23,7 @@ import { company } from "../site.config.mjs";
         {company.details.map((row) => (
           <div>
             <dt>{row.label}</dt>
-            <dd>{row.value}</dd>
+            <dd>{Array.isArray(row.value) ? row.value.map((line) => <span class="line">{line}</span>) : row.value}</dd>
           </div>
         ))}
       </dl>

@@ -3,9 +3,11 @@
 :root {
   --bg: #f4f5f7;
   --surface: #ffffff;
+  --surface-hover: #f9fafb;
   --text: #111113;
   --muted: #5e6168;
   --line: #e2e4e9;
+  --line-hover: #cfd3db;
   --placeholder: #e4e6ea;
   --placeholder-text: #8b8f97;
   --button: #111113;
@@ -14,6 +16,20 @@
   --radius: 16px;
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --section-space: clamp(80px, 10vw, 136px);
+}
+
+html[data-theme="dark"] {
+  --bg: #0e0f12;
+  --surface: #16181d;
+  --surface-hover: #1d2027;
+  --text: #f2f3f5;
+  --muted: #8b909a;
+  --line: #252830;
+  --line-hover: #383d48;
+  --placeholder: #1c1f26;
+  --placeholder-text: #6d727c;
+  --button: #f2f3f5;
+  --button-text: #0e0f12;
 }
 
 *,
@@ -330,8 +346,27 @@ p {
   padding-bottom: var(--section-space);
 }
 
+.company .container.narrow {
+  max-width: 698px; /* 650px of content plus the side padding */
+}
+
 .company h1 {
-  font-size: clamp(40px, 6vw, 64px);
+  font-size: clamp(28px, 7.4vw, 56px);
+}
+
+.company-name span {
+  display: block;
+}
+
+.company-name .company-name-suffix {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.42em;
+  letter-spacing: 0.04em;
+}
+
+.details dd .line {
+  display: block;
 }
 
 .company-local {
@@ -449,4 +484,130 @@ p {
 
 .studios .use-case p + p {
   margin-top: 14px;
+}
+
+/* OPERON DESIGN LAB portal */
+
+html[data-theme="dark"] body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html[data-theme="dark"] main {
+  flex: 1;
+}
+
+.operon-brand {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.header-link {
+  color: var(--muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.header-link:hover {
+  color: var(--text);
+}
+
+.portal {
+  padding: clamp(88px, 14vh, 152px) 0 clamp(80px, 12vh, 136px);
+}
+
+.portal .container.narrow {
+  max-width: 698px;
+}
+
+.portal-header {
+  padding-bottom: clamp(56px, 8vw, 88px);
+}
+
+.portal-title {
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.12;
+}
+
+.portal-subtitle {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: clamp(16px, 2vw, 19px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.portal-list {
+  border-top: 1px solid var(--line);
+}
+
+.portal-item {
+  padding: clamp(48px, 7vw, 72px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.portal-item-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+}
+
+.portal-item-num,
+.portal-item-sep {
+  color: var(--muted);
+  font-size: 0.78em;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.portal-item-tagline {
+  margin-top: 20px;
+  color: var(--text);
+  font-size: clamp(17px, 2vw, 19px);
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.portal-item-desc {
+  max-width: 58ch;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.portal-item-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 32px;
+  margin-top: 28px;
+  font-size: 13px;
+}
+
+.portal-item-meta {
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.portal-item-link {
+  color: var(--text);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.portal-item-link:hover {
+  opacity: 0.72;
 }

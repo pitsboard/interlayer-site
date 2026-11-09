@@ -114,15 +114,63 @@ export const home = {
   },
 };
 
+// Build target:
+// - "operon" (default / GitHub Pages -> operondesign.com)
+// - "interlayer" (Cloudflare Pages with CF_PAGES=1 or SITE_TARGET=interlayer -> inter-layer.app)
+export const siteTarget =
+  process.env.SITE_TARGET ||
+  (process.env.CF_PAGES === "1" ? "interlayer" : "operon");
+
+export const portal = {
+  title: "OPERON DESIGN LAB",
+  subtitle: "Independent Hardware & Software Studio",
+  projects: [
+    {
+      id: "01",
+      name: "InterLayer",
+      tagline: "A customizable interface for your Mac.",
+      description:
+        "Turn your iPad into a flexible control surface. Create custom layouts, shortcuts, and interactive controls for your favorite applications.",
+      meta: "SOFTWARE · macOS",
+      href: "https://inter-layer.app/",
+      linkLabel: "Explore InterLayer ↗",
+    },
+    {
+      id: "02",
+      name: "PitsBoard",
+      tagline: "A new approach to tactile control.",
+      description:
+        "A modular hardware interface combining touch, pressure sensing, and haptic feedback. Designed to bring physical interaction to digital workflows.",
+      meta: "HARDWARE · IN DEVELOPMENT",
+      href: "https://pitsboard.com/",
+      linkLabel: "Explore PitsBoard ↗",
+    },
+    {
+      id: "03",
+      name: "Touch Dial",
+      tagline: "A physical controller, reimagined.",
+      description:
+        "An experimental compact controller exploring touch, pressure, and tactile feedback in a single device.",
+      meta: "HARDWARE · COMING SOON",
+      href: "",
+      linkLabel: "",
+    },
+  ],
+};
+
 export const company = {
   name: "OPERON DESIGN LAB LLC",
+  // Page heading: the main name large, the suffix small on its own line.
+  heading: { main: "OPERON DESIGN LAB", suffix: "LLC" },
   tagline: "Software, interaction and input-device development.",
   products: [
-    { name: "InterLayer", href: "/" },
-    { name: "PitsBoard", href: "" }, // add a URL when there is one
+    { name: "InterLayer", href: "https://inter-layer.app/" },
+    { name: "PitsBoard", href: "https://pitsboard.com/" },
   ],
   details: [
-    { label: "Address", value: "AKASAKA FRONT TOWN 3F., 4-8-19, AKASAKA, MINATO-KU, TOKYO" },
+    { label: "Company name", value: "OPERON DESIGN LAB LLC" },
+    // Each line of the address is shown on its own line.
+    { label: "Address", value: ["AKASAKA FRONT TOWN 3F", "4-8-19 Akasaka, Minato-ku, Tokyo, Japan"] },
     { label: "Founded", value: "2026" },
   ],
   contact: {

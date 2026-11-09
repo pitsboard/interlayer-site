@@ -5,7 +5,9 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "astro dev",
+    "dev:interlayer": "SITE_TARGET=interlayer astro dev",
     "build": "astro build",
+    "build:interlayer": "SITE_TARGET=interlayer astro build",
     "preview": "astro preview"
   },
   "dependencies": {

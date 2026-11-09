@@ -1,10 +1,11 @@
 ---
-import { product, footer } from "../site.config.mjs";
+import { product, company, footer, siteTarget } from "../site.config.mjs";
+const isOperon = siteTarget === "operon";
 ---
 <footer class="site-footer">
   <div class="container footer-inner">
     <nav class="footer-links" aria-label="Footer">
-      <a href="/">{product.name}</a>
+      <a href="/">{isOperon ? company.heading.main : product.name}</a>
       <a href="/company">Company</a>
       <a href="/company#contact">Contact</a>
     </nav>

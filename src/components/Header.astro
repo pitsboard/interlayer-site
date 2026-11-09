@@ -1,12 +1,24 @@
 ---
-import { product } from "../site.config.mjs";
+import { product, company, siteTarget } from "../site.config.mjs";
+const isOperon = siteTarget === "operon";
 ---
 <header class="site-header">
   <div class="container header-inner">
-    <a class="brand" href="/">
-      <img src={product.icon} alt="" width="28" height="28" />
-      <span>{product.name}</span>
-    </a>
-    <a class="button small" href="/#download">Download</a>
+    {isOperon ? (
+      <>
+        <a class="brand operon-brand" href="/">
+          <span>{company.heading.main}</span>
+        </a>
+        <a class="header-link" href="/company">Company</a>
+      </>
+    ) : (
+      <>
+        <a class="brand" href="/">
+          <img src={product.icon} alt="" width="28" height="28" />
+          <span>{product.name}</span>
+        </a>
+        <a class="button small" href="/#download">Download</a>
+      </>
+    )}
   </div>
 </header>

@@ -2,96 +2,132 @@
 import Base from "../layouts/Base.astro";
 import Media from "../components/Media.astro";
 import DownloadButton from "../components/DownloadButton.astro";
-import { product, download, home } from "../site.config.mjs";
+import { product, download, home, portal, siteTarget } from "../site.config.mjs";
 const { hero, sidecar, anywhere, useCases, studio, studiosIntro, studios } = home;
+const isOperon = siteTarget === "operon";
 ---
-<Base>
-  <section class="section hero">
-    <div class="container center">
-      <h1>{hero.heading}</h1>
-      <p class="lead">{hero.lead}</p>
-      <div class="cta">
-        <DownloadButton />
-        <span class="cta-note">{download.platform}</span>
+{isOperon ? (
+  <Base showHeader={false}>
+    <section class="section portal">
+      <div class="container narrow">
+        <header class="portal-header">
+          <h1 class="portal-title">{portal.title}</h1>
+          <p class="portal-subtitle">{portal.subtitle}</p>
+        </header>
+
+        <div class="portal-list">
+          {portal.projects.map((project) => (
+            <article class="portal-item">
+              <h2 class="portal-item-title">
+                <span class="portal-item-num">{project.id}</span>
+                <span class="portal-item-sep" aria-hidden="true">—</span>
+                <span>{project.name}</span>
+              </h2>
+              <p class="portal-item-tagline">{project.tagline}</p>
+              <p class="portal-item-desc">{project.description}</p>
+              <div class="portal-item-footer">
+                <span class="portal-item-meta">{project.meta}</span>
+                {project.href && (
+                  <a class="portal-item-link" href={project.href}>
+                    {project.linkLabel}
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
-    <div class="container wide">
-      <Media {...hero.media} />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container center">
-      <h2>{sidecar.heading}</h2>
-      <p class="lead">{sidecar.lead}</p>
-    </div>
-    <div class="container wide">
-      <Media {...sidecar.media} />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container center">
-      <h2>{anywhere.heading}</h2>
-      <p class="lead">{anywhere.lead}</p>
-    </div>
-    <div class="container wide">
-      <Media {...anywhere.media} />
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container center">
-      <h2>{useCases.heading}</h2>
-    </div>
-    <div class="container wide use-cases">
-      {useCases.items.map((item) => (
-        <article class="use-case">
-          <Media {...item.media} />
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container center">
-      <h2>{studio.heading}</h2>
-      <p class="lead">{studio.lead}</p>
-    </div>
-    <div class="container wide">
-      <Media {...studio.media} />
-    </div>
-    <div class="container center studios-intro">
-      <h3>{studiosIntro.heading}</h3>
-      {studiosIntro.lines.map((line) => <p>{line}</p>)}
-    </div>
-    <div class="container wide use-cases studios">
-      {studios.map((item) => (
-        <article class="use-case">
-          <Media {...item.media} />
-          <h3>{item.title}{item.note && <span class="studio-note">{item.note}</span>}</h3>
-          {item.paragraphs.map((text) => <p>{text}</p>)}
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section download" id="download">
-    <div class="container center">
-      <img class="app-icon" src={product.icon} alt="" width="88" height="88" />
-      <h2>{home.download.heading}</h2>
-      <div class="cta">
-        <DownloadButton />
+    </section>
+  </Base>
+) : (
+  <Base>
+    <section class="section hero">
+      <div class="container center">
+        <h1>{hero.heading}</h1>
+        <p class="lead">{hero.lead}</p>
+        <div class="cta">
+          <DownloadButton />
+          <span class="cta-note">{download.platform}</span>
+        </div>
       </div>
-      <div class="requirements">
-        <h3>{download.requirements.heading}</h3>
-        <ul>
-          {download.requirements.items.map((item) => <li>{item}</li>)}
-        </ul>
-        <p class="fine-print">Note: {download.requirements.note}</p>
+      <div class="container wide">
+        <Media {...hero.media} />
       </div>
-    </div>
-  </section>
-</Base>
+    </section>
+
+    <section class="section">
+      <div class="container center">
+        <h2>{sidecar.heading}</h2>
+        <p class="lead">{sidecar.lead}</p>
+      </div>
+      <div class="container wide">
+        <Media {...sidecar.media} />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container center">
+        <h2>{anywhere.heading}</h2>
+        <p class="lead">{anywhere.lead}</p>
+      </div>
+      <div class="container wide">
+        <Media {...anywhere.media} />
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container center">
+        <h2>{useCases.heading}</h2>
+      </div>
+      <div class="container wide use-cases">
+        {useCases.items.map((item) => (
+          <article class="use-case">
+            <Media {...item.media} />
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container center">
+        <h2>{studio.heading}</h2>
+        <p class="lead">{studio.lead}</p>
+      </div>
+      <div class="container wide">
+        <Media {...studio.media} />
+      </div>
+      <div class="container center studios-intro">
+        <h3>{studiosIntro.heading}</h3>
+        {studiosIntro.lines.map((line) => <p>{line}</p>)}
+      </div>
+      <div class="container wide use-cases studios">
+        {studios.map((item) => (
+          <article class="use-case">
+            <Media {...item.media} />
+            <h3>{item.title}{item.note && <span class="studio-note">{item.note}</span>}</h3>
+            {item.paragraphs.map((text) => <p>{text}</p>)}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section download" id="download">
+      <div class="container center">
+        <img class="app-icon" src={product.icon} alt="" width="88" height="88" />
+        <h2>{home.download.heading}</h2>
+        <div class="cta">
+          <DownloadButton />
+        </div>
+        <div class="requirements">
+          <h3>{download.requirements.heading}</h3>
+          <ul>
+            {download.requirements.items.map((item) => <li>{item}</li>)}
+          </ul>
+          <p class="fine-print">Note: {download.requirements.note}</p>
+        </div>
+      </div>
+    </section>
+  </Base>
+)}
